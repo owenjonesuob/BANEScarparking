@@ -56,6 +56,6 @@ and you should be good to go!
 
 ---
 
-**Version:** 0.1.4
+**Version:** 0.1.4 (released 2017/08/18)
 
 **Contact:** Owen Jones (olj23@bath.ac.uk)
