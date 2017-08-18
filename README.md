@@ -1,18 +1,15 @@
 # **BANEScarparking**
 
-[![version](https://img.shields.io/badge/version-0.1.3-brightgreen.svg)]()
-[![released](https://img.shields.io/badge/last_update-2017--04--06-lightgrey.svg)]()
-[![last tweak](https://img.shields.io/badge/last_tweak-2017--05--14-lightgrey.svg)]()
-
 Datasets of parking records from 8 car parks located in Bath, United Kingdom; datasets of potentially relevant information for predicting car park occupancy; and functions for obtaining and working with these datasets.
 
-Data is open-source and is provided by Bath and North East Somerset Council in collaboration with Bath: Hacked.
+Parking data is open-source and is provided by Bath and North East Somerset Council in collaboration with Bath: Hacked.
 
-> #### **What's new in v0.1.3:**
+If you just want the functions without the datasets, you can find a stripped-down version of the package at [BANEScarparkinglite](https://github.com/Bath-ML/parking/tree/master/r/BANEScarparkinglite).
+
+> #### **What's new in v0.1.4:**
 > 
-> * `get_events` is now more specific: it can bring in counts from any date range, rather than being restricted to month-long blocks
-> * Bugfixes for webscraping functions (i.e. they now work as expected)
-> * Full dataset of records renamed `full_dataset` (intuitive, right? I don't know why it wasn't called that already)
+> * `get_events_detail` (written by @rkenning) expands on `get_events` by grabbing more information about each event in a range of dates
+> * Bugfixes for `get_events` and `get_rugby`, which had stopped working due to strange redirects on the websites they scrape
 > * Updates to associated documentation
 
 ---
@@ -58,6 +55,6 @@ and you should be good to go!
 
 ---
 
-**Version:** 0.1.3
+**Version:** 0.1.4
 
 **Contact:** Owen Jones (olj23@bath.ac.uk)
