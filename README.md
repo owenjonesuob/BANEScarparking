@@ -8,6 +8,7 @@ If you just want the functions without the datasets, you can find a stripped-dow
 
 > #### **What's new in v0.1.4:**
 > 
+> * `get_daily_weather` grabs a daily weather summary from [wunderground.com](https://www.wunderground.com/) for each day in a range of dates
 > * `get_events_detail` (written by @rkenning) expands on `get_events` by grabbing more information about each event in a range of dates
 > * Bugfixes for `get_events` and `get_rugby`, which had stopped working due to strange redirects on the websites they scrape
 > * Updates to associated documentation
