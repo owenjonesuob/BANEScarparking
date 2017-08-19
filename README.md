@@ -36,7 +36,7 @@ If you just want the functions without the datasets, you can find a stripped-dow
 * `get_all_crude` (and `get_range_crude`) for retrieving the full dataset (or a subset) of records from Bath: Hacked datastore
 * `refine` for processing the raw records
 * `refuel` and `refuel_crude` for updating existing data frames with recent records
-* `get_rugby`, `get_events`, `get_daily_events` and `get_daily_weather` for obtaining information through web-scraping
+* `get_rugby`, `get_events` (and `get_events_detail`) and `get_daily_weather` for obtaining information through web-scraping
 
 ---
 
