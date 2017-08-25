@@ -76,6 +76,9 @@ refine <- function(x, max_prop = 1.1, first_upload = FALSE) {
 #' Remove duplicate records (internal method)
 #'
 #' (Internal method)
+#' 
+#' @param x Data frame containing records.
+#' @param first_upload If TRUE, ensures record with oldest DateUploaded is kept.
 
 refine.deduplicate <- function(x, first_upload) {
     dplyr::group_by(x, Name, LastUpdate) %>%
