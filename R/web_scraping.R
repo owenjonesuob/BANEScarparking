@@ -357,8 +357,8 @@ get_events_detail <- function(from, to) {
 #' This function scrapes the \href{https://www.wunderground.com/}{Wunderground}
 #'  website to get daily weather summaries for Bath over a given date range.
 #'  
-#' @note The website can only display up to ~390 records in one go; asking for
-#'  more than this will lead to an error.
+#' @note The website can only display up to 398 records in one go; asking for
+#'  more than this will only give you 398 records, starting at \code{from}!
 #' 
 #' @param from A date or date-time object, or YYYY-MM-DD string: the first day
 #'  from which to get a weather summary.
@@ -389,7 +389,7 @@ get_events_detail <- function(from, to) {
 get_daily_weather <- function(from, to) {
     
     # Make start date into correct format, and extract numbers from end date
-    from_day <- gsub("-", "/", as.character(from))
+    from_day <- gsub("-", "/", as.character(as.Date(from)))
     day_end <- lubridate::day(lubridate::as_date(to))
     month_end <- lubridate::month(lubridate::as_date(to))
     year_end <- lubridate::year(lubridate::as_date(to))
