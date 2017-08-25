@@ -210,10 +210,10 @@ get_events <- function(from, to) {
 
     # Trim the last month... (events only up to "to" date)
     lec <- length(event_count)
-    event_count[[lec]] <- utils::head(event_count[[lec]], lubridate::day(to))
+    event_count[[lec]] <- event_count[[lec]][1:{lubridate::day(to)}]
 
     # Then the first month... (events only from "from" date)
-    event_count[[1]] <- utils::tail(event_count[[1]], -lubridate::day(from) + 1)
+    event_count[[1]] <- event_count[[1]][{lubridate::day(from)}:length(event_count[[1]])]
 
 
     # Get all dates in the months we are looking at
