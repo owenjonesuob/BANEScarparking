@@ -1,5 +1,7 @@
 # **BANEScarparking**
 
+![](https://travis-ci.org/owenjonesuob/BANEScarparking.svg?branch=master)
+
 Datasets of parking records from 8 car parks located in Bath, United Kingdom; datasets of potentially relevant information for predicting car park occupancy; and functions for obtaining and working with these datasets.
 
 Parking data is open-source and is provided by Bath and North East Somerset Council in collaboration with Bath: Hacked.
@@ -7,7 +9,7 @@ Parking data is open-source and is provided by Bath and North East Somerset Coun
 If you just want the functions without the datasets, you can find a stripped-down version of the package at [BANEScarparkinglite](https://github.com/Bath-ML/parking/tree/master/r/BANEScarparkinglite).
 
 > #### **What's new in v0.1.4:**
-> 
+>
 > * `get_daily_weather` grabs a daily weather summary from [wunderground.com](https://www.wunderground.com/) for each day in a range of dates
 > * `get_events_detail` (written by @rkenning) expands on `get_events` by grabbing more information about each event in a range of dates
 > * Bugfixes for `get_events` and `get_rugby`, which had stopped working due to strange redirects on the websites they scrape
