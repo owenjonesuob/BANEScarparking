@@ -20,8 +20,7 @@ A data frame of daily event details for each day in the specified
 \description{
 Web scraping function to retrieve the detail for events advertised at
  \url{http://www.bath.co.uk/events} for each day in a specified range of
- dates.\cr\cr
- \emph{(Author: Ryan Kenning.)}
+ dates.
 }
 \examples{
 # Return daily event details from 01 Oct 2014 to 31 Jul 2015
@@ -32,4 +31,7 @@ raw_data <- get_all_crude()
 df <- refine(raw_data)
 
 events <- get_events_detail(min(df$LastUpdate), max(df$LastUpdate))
+}
+\author{
+Ryan Kenning (@rkenning)
 }
