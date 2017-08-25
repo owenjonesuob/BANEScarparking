@@ -22,8 +22,8 @@ This function scrapes the \href{https://www.wunderground.com/}{Wunderground}
  website to get daily weather summaries for Bath over a given date range.
 }
 \note{
-The website can only display up to ~390 records in one go; asking for
- more than this will lead to an error.
+The website can only display up to 398 records in one go; asking for
+ more than this will only give you 398 records, starting at \code{from}!
 }
 \examples{
 # Return daily weather summaries from 01 Oct 2014 to 17 Jul 2015
