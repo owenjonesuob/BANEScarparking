@@ -356,6 +356,9 @@ get_events_detail <- function(from, to) {
 #' 
 #' This function scrapes the \href{https://www.wunderground.com/}{Wunderground}
 #'  website to get daily weather summaries for Bath over a given date range.
+#'  
+#' @note The website can only display up to ~390 records in one go; asking for
+#'  more than this will lead to an error.
 #' 
 #' @param from A date or date-time object, or YYYY-MM-DD string: the first day
 #'  from which to get a weather summary.
@@ -367,11 +370,20 @@ get_events_detail <- function(from, to) {
 #' # Return daily weather summaries from 01 Oct 2014 to 17 Jul 2015
 #' weather <- get_daily_weather("2014-10-01", "2015-07-17")
 #'
-#' # Return daily event counts for all days in date range of parking records
+#'
+#' # Return daily event counts for all days in date range of parking records: we
+#' # have to do it in chunks because there are too many to collect in one go
+#' library(lubridate)
+#' 
 #' raw_data <- get_all_crude()
 #' df <- refine(raw_data)
-#'
-#' weather <- get_daily_weather(min(df$LastUpdate), max(df$LastUpdate))
+#' 
+#' weather <- rbind(get_daily_weather(min(df$LastUpdate),
+#'                                    min(df$LastUpdate) + years(1)),
+#'                  get_daily_weather(min(df$LastUpdate) + years(1) + days(1),
+#'                                    min(df$LastUpdate) + years(2)),
+#'                  get_daily_weather(min(df$LastUpdate) + years(2) + days(1),
+#'                                    max(df$LastUpdate)))
 #' @export
 
 get_daily_weather <- function(from, to) {
