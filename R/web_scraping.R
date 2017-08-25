@@ -239,8 +239,8 @@ get_events <- function(from, to) {
 #'
 #' Web scraping function to retrieve the detail for events advertised at
 #'  \url{http://www.bath.co.uk/events} for each day in a specified range of
-#'  dates.\cr\cr
-#'  \emph{(Author: Ryan Kenning.)}
+#'  dates.
+#' @author Ryan Kenning (@@rkenning)
 #' @param from A date or date-time object, or string, of the first
 #'  date for which to find events.
 #' @param to A date or date-time object, or string, of the last
@@ -272,7 +272,7 @@ get_events_detail <- function(from, to) {
     names(event_count) <- year_month_day_seq
 
 
-    #Initialise 0 length vectors to create the initial DF object (Not sure if this is the best approach to append to a df type pattern)
+    # Initialise 0 length vectors to create the initial DF object (Not sure if this is the best approach to append to a df type pattern)
     year_month_day <- vector(mode="character",0)
     event_name <- vector(mode="character", 0)
     event_location_name <- vector(mode="character", 0)
@@ -291,17 +291,21 @@ get_events_detail <- function(from, to) {
         # Connect to address and return HTLM page from URL
         url <- addresses[ymd]
         # Parse the HTML page
-        webpage <- read_html(url)
+        webpage <- xml2::read_html(url)
 
         # Find the Timeslot HTML nodes
-        event_time_slot <- webpage %>% html_nodes(".tribe-events-day-time-slot")
+        event_time_slot <- webpage %>%
+            rvest::html_nodes(".tribe-events-day-time-slot")
 
         #Loop through the timeslots
         for (i in 2:length(event_time_slot)){
             # Get the current timeslot header text
-            time_slot_val <- event_time_slot[i] %>% html_node(xpath=".//h5") %>% html_text()
+            time_slot_val <- event_time_slot[i] %>%
+                rvest::html_node(xpath=".//h5") %>%
+                rvest::html_text()
             # From the current timeslot, get the event detail html node
-            event_detail_nodes <- event_time_slot[i] %>% html_nodes(xpath=".//div[contains(@class, 'type-tribe_events')]")
+            event_detail_nodes <- event_time_slot[i] %>%
+                rvest::html_nodes(xpath=".//div[contains(@class, 'type-tribe_events')]")
 
             # Initialise the value vectors with the length based on number of events found
             event_name <- vector(mode="character", length=length(event_detail_nodes))
@@ -317,23 +321,23 @@ get_events_detail <- function(from, to) {
             # Revised html text function to retun NA if no HTML text value can be found
             html_text_na <- function(x, ...) {
 
-                txt <- try(html_text(x, ...))
+                txt <- try(rvest::html_text(x, ...))
                 if (inherits(txt, "try-error") |
                     (length(txt)==0)) { return(NA) }
                 return(txt)
 
             }
 
-            #Loop through each event node
+            # Loop through each event node
             for (j in 1:length(event_detail_nodes)){
                 #Add parsed event
-                event_name[j] <- html_nodes(event_detail_nodes[j], xpath=".//a[@class='url']") %>% html_text(trim=TRUE)
-                event_location_name[j] <- html_node(event_detail_nodes[j], xpath=".//div[@class='tribe-events-venue-details']//a/text()") %>% html_text_na()
-                event_postcode[j] <- html_node(event_detail_nodes[j], xpath=".//*[contains(concat( ' ', @class, ' ' ), 'tribe-postal-code')]") %>% html_text_na()
-                event_street[j] <- html_node(event_detail_nodes[j], xpath=".//*[contains(concat( ' ', @class, ' ' ), 'tribe-street-address')]") %>% html_text_na()
-                event_locality[j] <- html_node(event_detail_nodes[j], xpath=".//*[contains(concat( ' ', @class, ' ' ), 'tribe-locality')]") %>% html_text_na()
-                event_start[j] <- html_node(event_detail_nodes[j], xpath=".//*[contains(concat( ' ', @class, ' ' ), 'tribe-event-date-start')]") %>% html_text_na()
-                event_end[j] <- html_node(event_detail_nodes[j], xpath=".//*[contains(concat( ' ', @class, ' ' ), 'tribe-event-date-end')]") %>% html_text_na()
+                event_name[j] <- rvest::html_nodes(event_detail_nodes[j], xpath=".//a[@class='url']") %>% rvest::html_text(trim=TRUE)
+                event_location_name[j] <- rvest::html_node(event_detail_nodes[j], xpath=".//div[@class='tribe-events-venue-details']//a/text()") %>% rvest::html_text()
+                event_postcode[j] <- rvest::html_node(event_detail_nodes[j], xpath=".//*[contains(concat( ' ', @class, ' ' ), 'tribe-postal-code')]") %>% rvest::html_text()
+                event_street[j] <- rvest::html_node(event_detail_nodes[j], xpath=".//*[contains(concat( ' ', @class, ' ' ), 'tribe-street-address')]") %>% rvest::html_text()
+                event_locality[j] <- rvest::html_node(event_detail_nodes[j], xpath=".//*[contains(concat( ' ', @class, ' ' ), 'tribe-locality')]") %>% rvest::html_text()
+                event_start[j] <- rvest::html_node(event_detail_nodes[j], xpath=".//*[contains(concat( ' ', @class, ' ' ), 'tribe-event-date-start')]") %>% rvest::html_text()
+                event_end[j] <- rvest::html_node(event_detail_nodes[j], xpath=".//*[contains(concat( ' ', @class, ' ' ), 'tribe-event-date-end')]") %>% rvest::html_text()
             }
 
 
