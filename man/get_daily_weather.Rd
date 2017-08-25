@@ -23,11 +23,11 @@ This function scrapes the \href{https://www.wunderground.com/}{Wunderground}
 }
 \examples{
 # Return daily weather summaries from 01 Oct 2014 to 17 Jul 2015
-weather <- get_weather("2014-10-01", "2015-07-17")
+weather <- get_daily_weather("2014-10-01", "2015-07-17")
 
 # Return daily event counts for all days in date range of parking records
 raw_data <- get_all_crude()
 df <- refine(raw_data)
 
-weather <- get_weather(min(df$LastUpdate), max(df$LastUpdate))
+weather <- get_daily_weather(min(df$LastUpdate), max(df$LastUpdate))
 }
