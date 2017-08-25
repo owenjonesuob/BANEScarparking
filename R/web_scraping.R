@@ -281,7 +281,7 @@ get_events_detail <- function(from, to) {
     event_locality <- vector(mode="character", 0)
     event_start <- vector(mode="character", 0)
     event_end <- vector(mode="character", 0)
-    time_slot <- vector(mode="character",0)
+    time_slot <- vector(mode="character", 0)
 
     # Create the initial df (Not sure if this is the best approach to append to a df type pattern)
     events <- data.frame(year_month_day, time_slot, event_name, event_location_name, event_postcode, event_street, event_locality, event_start, event_end)
@@ -332,25 +332,27 @@ get_events_detail <- function(from, to) {
             for (j in 1:length(event_detail_nodes)){
                 #Add parsed event
                 event_name[j] <- rvest::html_nodes(event_detail_nodes[j], xpath=".//a[@class='url']") %>% rvest::html_text(trim=TRUE)
-                event_location_name[j] <- rvest::html_node(event_detail_nodes[j], xpath=".//div[@class='tribe-events-venue-details']//a/text()") %>% rvest::html_text()
-                event_postcode[j] <- rvest::html_node(event_detail_nodes[j], xpath=".//*[contains(concat( ' ', @class, ' ' ), 'tribe-postal-code')]") %>% rvest::html_text()
-                event_street[j] <- rvest::html_node(event_detail_nodes[j], xpath=".//*[contains(concat( ' ', @class, ' ' ), 'tribe-street-address')]") %>% rvest::html_text()
-                event_locality[j] <- rvest::html_node(event_detail_nodes[j], xpath=".//*[contains(concat( ' ', @class, ' ' ), 'tribe-locality')]") %>% rvest::html_text()
-                event_start[j] <- rvest::html_node(event_detail_nodes[j], xpath=".//*[contains(concat( ' ', @class, ' ' ), 'tribe-event-date-start')]") %>% rvest::html_text()
-                event_end[j] <- rvest::html_node(event_detail_nodes[j], xpath=".//*[contains(concat( ' ', @class, ' ' ), 'tribe-event-date-end')]") %>% rvest::html_text()
+                event_location_name[j] <- rvest::html_node(event_detail_nodes[j], xpath=".//div[@class='tribe-events-venue-details']//a/text()") %>% html_text_na()
+                event_postcode[j] <- rvest::html_node(event_detail_nodes[j], xpath=".//*[contains(concat( ' ', @class, ' ' ), 'tribe-postal-code')]") %>% html_text_na()
+                event_street[j] <- rvest::html_node(event_detail_nodes[j], xpath=".//*[contains(concat( ' ', @class, ' ' ), 'tribe-street-address')]") %>% html_text_na()
+                event_locality[j] <- rvest::html_node(event_detail_nodes[j], xpath=".//*[contains(concat( ' ', @class, ' ' ), 'tribe-locality')]") %>% html_text_na()
+                event_start[j] <- rvest::html_node(event_detail_nodes[j], xpath=".//*[contains(concat( ' ', @class, ' ' ), 'tribe-event-date-start')]") %>% html_text_na()
+                event_end[j] <- rvest::html_node(event_detail_nodes[j], xpath=".//*[contains(concat( ' ', @class, ' ' ), 'tribe-event-date-end')]") %>% html_text_na()
             }
 
 
-            # Make a Dataframe from the populated vectors
-            new_events <- data.frame(year_month_day_seq[ymd],time_slot, event_name, event_location_name, event_postcode, event_street, event_locality, event_start, event_end)
-            # Combine the event details collect so far with the new event details parsed for the current day and timeslot
-            events <- rbind(events, new_events )
-
+            # Make a Dataframe from the populated vectors (only if there are any events)
+            if (length(event_detail_nodes)) {
+                new_events <- data.frame(year_month_day_seq[ymd], time_slot, event_name, event_location_name, event_postcode, event_street, event_locality, event_start, event_end)
+                # Combine the event details collect so far with the new event details parsed for the current day and timeslot
+                events <- rbind(events, new_events )
+            }
         }
     }
     # Return the dataframe
     events
 }
+
 
 
 
