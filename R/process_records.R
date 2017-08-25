@@ -69,7 +69,7 @@ refine <- function(x, max_prop = 1.1, first_upload = FALSE) {
         #        DateUploaded = as.POSIXct(DateUploaded, tz = "UTC",
         #                                  format = "%d/%m/%Y %I:%M:%S %p")) %>%
         # Remove duplicate records:
-        BANEScarparking:::refine.deduplicate(first_upload = first_upload)
+        refine.deduplicate(first_upload = first_upload)
 }
 
 
