@@ -248,8 +248,8 @@ get_events <- function(from, to) {
 #' @return A data frame of daily event details for each day in the specified
 #'  range of months.
 #' @examples
-#' # Return daily event details from 01 Oct 2014 to 31 Jul 2015
-#' events <- get_events_detail("2014-10-01", "2015-07-17")
+#' # Return daily event details from 01 Oct 2014 to 08 Oct 2014
+#' events <- get_events_detail("2014-10-01", "2015-10-08")
 #'
 #' @export
 
@@ -380,8 +380,8 @@ get_events_detail <- function(from, to) {
 #'
 #' # Return daily event counts for all days in date range of parking records: we
 #' # have to do it in chunks because there are too many to collect in one go
-#' ## [Not run]
-#' library(lubridate)
+#' 
+#' # library(lubridate)
 #'
 #' # raw_data <- get_all_crude()
 #' # df <- refine(raw_data)
