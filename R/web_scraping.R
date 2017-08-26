@@ -160,7 +160,12 @@ get_events <- function(from, to) {
     # Initialize event-count vector
     event_count <- vector("list", length(addresses))
     names(event_count) <- year_month
+    
+    # Create a text bar in the console
 
+    pb <- utils::txtProgressBar(min = 0, max = length(addresses),
+                                initial = 0, style = 3)
+    
     # For each year-month:
     for (i in 1:length(addresses)) {
 
@@ -206,6 +211,9 @@ get_events <- function(from, to) {
 
         # Add this list to our list of year-month event counts
         event_count[[i]] <- daily_event_count
+        
+        # Update progress bar
+        utils::setTxtProgressBar(pb, i)
     }
 
     # Trim the last month... (events only up to "to" date)
