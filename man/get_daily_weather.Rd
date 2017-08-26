@@ -32,15 +32,16 @@ weather <- get_daily_weather("2014-10-01", "2015-07-17")
 
 # Return daily event counts for all days in date range of parking records: we
 # have to do it in chunks because there are too many to collect in one go
-library(lubridate)
 
-raw_data <- get_all_crude()
-df <- refine(raw_data)
+# library(lubridate)
 
-weather <- rbind(get_daily_weather(min(df$LastUpdate),
-                                   min(df$LastUpdate) + years(1)),
-                 get_daily_weather(min(df$LastUpdate) + years(1) + days(1),
-                                   min(df$LastUpdate) + years(2)),
-                 get_daily_weather(min(df$LastUpdate) + years(2) + days(1),
-                                   max(df$LastUpdate)))
+# raw_data <- get_all_crude()
+# df <- refine(raw_data)
+
+# weather <- rbind(get_daily_weather(min(df$LastUpdate),
+#                                    min(df$LastUpdate) + years(1)),
+#                  get_daily_weather(min(df$LastUpdate) + years(1) + days(1),
+#                                    min(df$LastUpdate) + years(2)),
+#                  get_daily_weather(min(df$LastUpdate) + years(2) + days(1),
+#                                    max(df$LastUpdate)))
 }
