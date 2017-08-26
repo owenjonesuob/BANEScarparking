@@ -26,13 +26,14 @@ get_rugby <- function(x) {
     for (i in 1:length(x)) {
 
         # Put together the link to the webpage for the season's fixtures
-        address <- paste0("http://www.bathrugby.com/fixtures-results/",
+        address <- paste0("https://www.bathrugby.com/fixtures-results/",
                           "results-tables/results-match-reports/",
                           "?seasonEnding=", x[i])
 
 
         # "Parse" page so we can work with it in R
-        parsedpage <- RCurl::getURL(address) %>%
+        parsedpage <- RCurl::getURL(address,
+                                    .opts = RCurl::curlOptions(followlocation = TRUE)) %>%
             XML::htmlParse()
 
         # Scrape required information from page (first, home match dates):
@@ -71,7 +72,7 @@ get_rugby <- function(x) {
             #   '%b': abbreviated month name
             #   ' ' : another space
             #   '%Y': 4-digit year
-        as.POSIXct(format = "%n%e %b %Y", tz = "UTC") %>%
+            as.POSIXct(format = "%n%e %b %Y", tz = "UTC") %>%
             # Reverse order of elements (to restore chronological order)
             rev()
 
