@@ -3,7 +3,7 @@ Type: Package
 Title: Car Parking Data for Bath and North East Somerset
 Version: 0.1.4
 Authors@R: c(person("Owen", "Jones", email = "olj23@bath.ac.uk", role = c("aut", "cre")),
-    person("Ryan", "Kenning", role = c("ctb")))
+    person("Ryan", "Kenning", role = c("aut", "ctb")))
 Description: Contains datasets of records from 8 car parks located in Bath,
     United Kingdom, and functions for working with these records.
     Data is open-source and is provided by Bath and North East
