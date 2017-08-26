@@ -251,11 +251,6 @@ get_events <- function(from, to) {
 #' # Return daily event details from 01 Oct 2014 to 31 Jul 2015
 #' events <- get_events_detail("2014-10-01", "2015-07-17")
 #'
-#' # Return daily event details for all months in date range of parking records
-#' raw_data <- get_all_crude()
-#' df <- refine(raw_data)
-#'
-#' events <- get_events_detail(min(df$LastUpdate), max(df$LastUpdate))
 #' @export
 
 get_events_detail <- function(from, to) {
@@ -285,7 +280,11 @@ get_events_detail <- function(from, to) {
 
     # Create the initial df (Not sure if this is the best approach to append to a df type pattern)
     events <- data.frame(year_month_day, time_slot, event_name, event_location_name, event_postcode, event_street, event_locality, event_start, event_end)
-
+    
+    # Add a progress bar to the console
+    pb <- utils::txtProgressBar(min = 0, max = length(year_month_day_seq),
+                                initial = 0, style = 3)
+    
     # For each year-month-day loop through the URLs:
     for (ymd in 1:length(addresses)) {
         # Connect to address and return HTLM page from URL
@@ -348,6 +347,8 @@ get_events_detail <- function(from, to) {
                 events <- rbind(events, new_events )
             }
         }
+        # Update the progress bar
+        utils::setTxtProgressBar(pb, value = ymd) 
     }
     # Return the dataframe
     events
