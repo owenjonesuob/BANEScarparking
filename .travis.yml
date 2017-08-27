@@ -1,2 +1,8 @@
+# Which language are we using?
 language: r
+
+# Cache installed packages to speed up build times
 cache: packages
+
+# Compression can be improved if we resave data on build
+r_build_args: --resave-data
