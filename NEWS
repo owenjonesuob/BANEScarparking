@@ -1,0 +1,95 @@
+BANEScarparking v0.1.5 (Release date: 2017-08-27)
+=================================================
+
+Additions:
+
+* Individual by-month/by-carpark datasets removed, because:
+  - Names containing numbers, underscores and plus-signs were difficult to use (often needed to be enclosed in backticks) and were also causing R CMD check (and hence Travis build) to fail
+  - These datasets were just subsets of `full_dataset` and so were somewhat unnecessarily increasing the size of the package. It's simple enough to filter `full_dataset` to a specific carpark or date range if needed.
+* Travis CI is now being used to check the build
+* Updated to MIT license
+* @rkenning has proper credit as an author/contributor
+* NEWS file added to keep a record of changes
+
+Bugfixes:
+
+* `get_events_detail` now correctly references functions from other packages, and it has a shiny new progress bar.
+* `get_events` would fail if you tried to start from the first day of a month. It doesn't do that any more. And it was jealous of `get_events_detail`'s progress bar, so it has one too.
+* `get_rugby` just plain wasn't working. It is now.
+* Examples in documentation have been corrected.
+
+
+
+
+
+BANEScarparking v0.1.4 (Release date: 2017-08-18)
+=================================================
+
+Additions:
+
+* `get_daily_weather` grabs a daily weather summary from [wunderground.com](https://www.wunderground.com/) for each day in a range of dates
+* `get_events_detail` (written by @rkenning) expands on `get_events` by grabbing more information about each event in a range of dates
+
+Bugfixes:
+
+* Bugfixes for `get_events` and `get_rugby`, which had stopped working due to strange redirects on the websites they scrape
+* Updates to associated documentation
+
+
+
+
+
+BANEScarparking v0.1.3 (Release date: 2017-04-06)
+=================================================
+
+Additions:
+
+* `get_events` is now more specific: it can bring in counts from any date range, rather than being restricted to month-long blocks
+
+Bugfixes:
+
+* Bugfixes for webscraping functions (i.e. they now work as expected)
+* Full dataset of parking records renamed full_dataset (intuitive, right? I don't know why it wasn't called that already)
+* Updates to associated documentation
+
+
+
+
+BANEScarparking v0.1.2 (Release date: 2017-02-12)
+=================================================
+
+Additions:
+
+* `get_range_crude` for retrieving a subset of raw records
+
+
+
+
+BANEScarparking v0.1.1 (Release date: 2017-01-11)
+=================================================
+
+Additions:
+
+* New datasets:
+  - Daily weather summary from 2014-10-17 to 2016-12-27
+  - Dates and kick-off times for Bath Rugby home matches from 2014-09 to 2016-12
+  - Daily count of events advertised at [www.bath.co.uk/events] from 2014-10 to 2016-12
+
+* Web-scraping functions for obtaining rugby and event count info:
+  - `get_rugby`
+  - `get_events`
+  
+* Welcome messages displayed when package is loaded
+
+
+
+
+BANEScarparking v0.1.0 (Release date: 2017-01-10)
+=================================================
+
+Additions:
+
+* Initial release. Datasets of parking records from 2014-16, basic parking record manipulation functions:
+  - `get_all_crude` for retrieving dataset of records from Bath: Hacked datastore
+  - `refine` for processing the raw records
+  - `refuel` and `refuel_crude` for updating existing data frames with recent records
