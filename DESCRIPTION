@@ -1,7 +1,7 @@
 Package: BANEScarparking
 Type: Package
 Title: Car Parking Data for Bath and North East Somerset
-Version: 0.1.4
+Version: 0.1.5
 Authors@R: c(person("Owen", "Jones", email = "olj23@bath.ac.uk", role = c("aut", "cre")),
     person("Ryan", "Kenning", role = c("aut", "ctb")))
 Description: Contains datasets of records from 8 car parks located in Bath,
