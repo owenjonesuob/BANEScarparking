@@ -8,24 +8,15 @@ Parking data is open-source and is provided by Bath and North East Somerset Coun
 
 If you just want the functions without the datasets, you can find a stripped-down version of the package at [BANEScarparkinglite](https://github.com/Bath-ML/parking/tree/master/r/BANEScarparkinglite).
 
-> #### **What's new in v0.1.5:**
+> #### **What's new in v0.2.0:**
 >
 > Additions:
 >
-> * Individual by-month/by-carpark datasets removed, because:
->     - Names containing numbers, underscores and plus-signs were difficult to use (often needed to be enclosed in backticks) and were also causing R CMD check (and hence Travis build) to fail.
->     - These datasets were just subsets of `full_dataset` and so were somewhat unnecessarily increasing the size of the package. It's simple enough to filter `full_dataset` to a specific carpark or date range if needed.
-> * Travis CI is now being used to check the build.
-> * Updated to MIT license.
-> * @rkenning has proper credit as an author/contributor.
-> * NEWS file added to keep a record of changes.
->
-> Bugfixes:
-> 
-> * `get_events_detail` now correctly references functions from other packages, and it has a shiny new progress bar.
-> * `get_events` would fail if you tried to start from the first day of a month. It doesn't do that any more. And it was jealous of `get_events_detail`'s progress bar, so it has one too.
-> * `get_rugby` just plain wasn't working. It is now.
-> * Examples in documentation have been corrected.
+> * All available car parking records up to end of 2017 added to `full_dataset` (the sensors on both SouthGate car parks have been out of action since November 2016 so there's no new data for either of those)
+> * `rugby` dataset updated: now contains dates/results of all Bath Rugby home games from September 2014 to end of 2017
+> * `events` dataset updated: now contains event counts for each day from 2014-10-17 to 2017-12-31
+> * `weather` dataset updated: now contains daily weather report for each day from 2014-10-17 to 2017-12-31, and the format is a bit nicer
+> * `get_daily_weather` produces the nicer-format weather table for any given date range (no longer limited to retrieving 398 records in one go...)
 
 ---
 
@@ -33,10 +24,10 @@ If you just want the functions without the datasets, you can find a stripped-dow
 
 #### Data:
 
-* Tidied parking records from 2014-10-17 to 2016-12-27
-* Daily weather summary from 2014-10-17 to 2016-12-27
-* Dates, kick-off times and outcomes for Bath Rugby home matches from 2014-09 to 2016-12
-* Daily count of events advertised at www.bath.co.uk/events from 2014-10 to 2016-12
+* Tidied parking records from 2014-10-17 to 2017-12-31
+* Daily weather summary from 2014-10-17 to 2017-12-31
+* Dates, kick-off times and outcomes for Bath Rugby home matches from 2014-09 to 2017-12
+* Daily count of events advertised at www.bath.co.uk/events from 2014-10-17 to 2017-12-31
 
 #### Functions:
 
@@ -63,6 +54,6 @@ and you should be good to go!
 
 ---
 
-**Version:** 0.1.5 (released 2017-08-27)
+**Version:** 0.2.0 (released 2018-01-20)
 
 **Contact:** Owen Jones (olj23@bath.ac.uk)
