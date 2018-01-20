@@ -8,9 +8,11 @@
 #'
 #' @return The full dataset of car parking records
 #' @examples
+#' \dontrun{
 #' raw_data <- get_all_crude()
 #'
 #' str(raw_data)
+#' }
 #' @seealso
 #' \itemize{
 #'  \item \code{\link{refuel_crude}} for updating raw records
@@ -41,8 +43,12 @@ get_all_crude <- function() {
 #'  \code{\link{get_all_crude}}).
 #' @return The data frame updated with any more recent records.
 #' @examples
-#' # raw_data <- get_all_crude()
-#' # raw_data <- refuel_crude(raw_data)
+#' \dontrun{
+#' raw_data <- get_all_crude()
+#' 
+#' # Some time later...
+#' raw_data <- refuel_crude(raw_data)
+#' }
 #' @seealso
 #' \itemize{
 #'  \item \code{\link{get_all_crude}} for obtaining data frame of raw records
@@ -90,11 +96,13 @@ refuel_crude <- function(x) {
 #' @param max_prop,first_upload See \code{\link{refine}}.
 #' @return The data frame updated with any more recent records.
 #' @examples
-#' # raw_data <- get_all_crude()
-#' # df <- refine(get_all_crude)
+#' \dontrun{
+#' raw_data <- get_all_crude()
+#' df <- refine(get_all_crude)
 #' 
-#' ## Add most recent records
-#' # df <- refuel(df)
+#' # Some time later, add most recent records
+#' df <- refuel(df)
+#' }
 #' @seealso
 #' \itemize{
 #'  \item \code{\link{get_all_crude}} for obtaining data frame of raw records
@@ -153,6 +161,7 @@ refuel <- function(x, max_prop = 1.1, first_upload = FALSE) {
 #'   }
 #' @return Car parking records from the specified date range.
 #' @examples
+#' \dontrun{
 #' library(lubridate)
 #'
 #' # Records for June 2016
@@ -166,7 +175,7 @@ refuel <- function(x, max_prop = 1.1, first_upload = FALSE) {
 #' # All records from P+Rs before 2015
 #' raw_data <- get_range_crude(to = ymd_hms("2014-12-31 23:59:59"),
 #'                             abbrs = c("l", "n", "od"))
-#'
+#' }
 #' @seealso \code{\link{get_all_crude}}
 #' @export
 

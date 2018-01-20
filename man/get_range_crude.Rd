@@ -32,6 +32,7 @@ Car parking records from the specified date range.
 Retrieve raw records uploaded to the datastore within a specified date range and/or from a subset of car parks.
 }
 \examples{
+\dontrun{
 library(lubridate)
 
 # Records for June 2016
@@ -45,7 +46,7 @@ raw_data <- get_range_crude(from = ymd_hms("2017-01-01 14:30:00"),
 # All records from P+Rs before 2015
 raw_data <- get_range_crude(to = ymd_hms("2014-12-31 23:59:59"),
                             abbrs = c("l", "n", "od"))
-
+}
 }
 \seealso{
 \code{\link{get_all_crude}}
