@@ -1,6 +1,7 @@
 # **BANEScarparking**
 
-Status: [![Build Status](https://travis-ci.org/owenjonesuob/BANEScarparking.svg?branch=master)](https://travis-ci.org/owenjonesuob/BANEScarparking)
+[![Build Status](https://travis-ci.org/owenjonesuob/BANEScarparking.svg?branch=master)](https://travis-ci.org/owenjonesuob/BANEScarparking)
+[![codecov.io](https://codecov.io/github/owenjonesuob/BANEScarparking/coverage.svg?branch=master)](https://codecov.io/github/owenjonesuob/BANEScarparking?branch=master)
 
 Dataset of parking records from 8 car parks located in Bath, United Kingdom; datasets of potentially relevant information for predicting car park occupancy; and functions for obtaining and working with these datasets.
 
