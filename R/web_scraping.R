@@ -292,7 +292,7 @@ get_events_detail <- function(from, to) {
     time_slot <- vector(mode="character", 0)
     
     # Create the initial df (Not sure if this is the best approach to append to a df type pattern)
-    events <- data.frame(year_month_day, time_slot, event_name, event_location_name, event_postcode, event_street, event_locality, event_start, event_end)
+    events <- data.frame(year_month_day, time_slot, event_name, event_location_name, event_postcode, event_street, event_locality, event_start, event_end, stringsAsFactors = FALSE)
     
     # Add a progress bar to the console
     pb <- utils::txtProgressBar(min = 0, max = length(year_month_day_seq),
