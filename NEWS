@@ -1,10 +1,26 @@
+BANEScarparking v0.2.0 (Release date: 2018-01-20)
+=================================================
+
+Additions:
+
+* All available car parking records up to end of 2017 added to `full_dataset` (the sensors on both SouthGate car parks have been out of action since November 2016 so there's no new data for either of those)
+* `rugby` dataset updated: now contains dates/results of all Bath Rugby home games from September 2014 to end of 2017
+* `events` dataset updated: now contains event counts for each day from 2014-10-17 to 2017-12-31
+* `weather` dataset updated: now contains daily weather report for each day from 2014-10-17 to 2017-12-31, and the format is a bit nicer
+* `get_daily_weather` produces the nicer-format weather table for any given date range (no longer limited to retrieving 398 records in one go...)
+* Add code tests for all main functionality (and add `covr` reporting to Travis)
+
+
+
+
+
 BANEScarparking v0.1.5 (Release date: 2017-08-27)
 =================================================
 
 Additions:
 
 * Individual by-month/by-carpark datasets removed, because:
-  - Names containing numbers, underscores and plus-signs were difficult to use (often needed to be enclosed in backticks) and were also causing R CMD check (and hence Travis build) to fail
+  - Names containing numbers, underscores and plus-signs were difficult to use (often needed to be enclosed in backticks) and were also causing R CMD check (and hence Travis build) to fail;
   - These datasets were just subsets of `full_dataset` and so were somewhat unnecessarily increasing the size of the package. It's simple enough to filter `full_dataset` to a specific carpark or date range if needed.
 * Travis CI is now being used to check the build
 * Updated to MIT license
@@ -16,7 +32,7 @@ Bugfixes:
 * `get_events_detail` now correctly references functions from other packages, and it has a shiny new progress bar.
 * `get_events` would fail if you tried to start from the first day of a month. It doesn't do that any more. And it was jealous of `get_events_detail`'s progress bar, so it has one too.
 * `get_rugby` just plain wasn't working. It is now.
-* Examples in documentation have been corrected.
+* Examples in documentation have been corrected
 
 
 
@@ -28,7 +44,7 @@ BANEScarparking v0.1.4 (Release date: 2017-08-18)
 Additions:
 
 * `get_daily_weather` grabs a daily weather summary from [wunderground.com](https://www.wunderground.com/) for each day in a range of dates
-* `get_events_detail` (written by @rkenning) expands on `get_events` by grabbing more information about each event in a range of dates
+* `get_events_detail` (written by Ryan Kenning @rkenning) expands on `get_events` by grabbing more information about each event in a range of dates
 
 Bugfixes:
 
@@ -49,8 +65,9 @@ Additions:
 Bugfixes:
 
 * Bugfixes for webscraping functions (i.e. they now work as expected)
-* Full dataset of parking records renamed full_dataset (intuitive, right? I don't know why it wasn't called that already)
+* Full dataset of parking records renamed `full_dataset` (intuitive, right? I don't know why it wasn't called that already)
 * Updates to associated documentation
+
 
 
 
@@ -61,6 +78,7 @@ BANEScarparking v0.1.2 (Release date: 2017-02-12)
 Additions:
 
 * `get_range_crude` for retrieving a subset of raw records
+
 
 
 
@@ -80,6 +98,7 @@ Additions:
   - `get_events`
   
 * Welcome messages displayed when package is loaded
+
 
 
 
