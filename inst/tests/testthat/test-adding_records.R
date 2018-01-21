@@ -2,8 +2,7 @@ context("Adding records")
 
 
 has_internet <- function() {
-    !as.logical(system("ping -n 1 r-project.org"),
-                show.output.on.console = FALSE)
+    !is.null(curl::nslookup("r-project.org", error = FALSE))
 }
 
     

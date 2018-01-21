@@ -2,8 +2,7 @@ context("Web scraping")
 
 
 has_internet <- function() {
-    !as.logical(system("ping -n 1 r-project.org"),
-                show.output.on.console = FALSE)
+    !is.null(curl::nslookup("r-project.org", error = FALSE))
 }
 
 
@@ -13,7 +12,7 @@ test_that("Rugby", {
     
     
     rugby <- get_rugby(c("2015", "2016"))
-    expect_equal(nrow(rugby, 34))
+    expect_equal(nrow(rugby), 34)
     
 })
 
@@ -38,7 +37,7 @@ test_that("Events", {
     
     event_count <- get_events("2015-01-01", "2015-03-01")
     expect_equal(nrow(event_count), 
-                 as.integer(as.Date("2016-03-01") - as.Date("2015-01-01")) + 1)
+                 as.integer(as.Date("2015-03-01") - as.Date("2015-01-01")) + 1)
     expect_is(event_count$count, "numeric")
     expect_true(all(event_count$count >= 0))
     
