@@ -20,9 +20,9 @@ test_that("Adding records for the first time", {
 
     
     
-    raw_range <- get_range_crude("2015-01-01 06:00:00", "2015-01-01 12:00:00")
+    raw_range <- get_range_crude("2015-01-01 06:00:00", "2015-01-01 12:00:00", abbrs = "as")
     
-    expect_equal(nrow(raw_range), 360)
+    expect_equal(nrow(raw_range), 72)
     expect_equal(as.character(min(raw_range$dateuploaded)), "2015-01-01 06:00:01")
     expect_equal(as.character(max(raw_range$dateuploaded)), "2015-01-01 11:55:01")
     
