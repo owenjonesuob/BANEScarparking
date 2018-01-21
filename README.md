@@ -1,6 +1,6 @@
 # **BANEScarparking**
 
-[![Build Status](https://travis-ci.org/owenjonesuob/BANEScarparking.svg?branch=master)](https://travis-ci.org/owenjonesuob/BANEScarparking)
+[![travis-ci.org](https://travis-ci.org/owenjonesuob/BANEScarparking.svg?branch=master)](https://travis-ci.org/owenjonesuob/BANEScarparking)
 [![codecov.io](https://codecov.io/github/owenjonesuob/BANEScarparking/coverage.svg?branch=master)](https://codecov.io/github/owenjonesuob/BANEScarparking?branch=master)
 
 Dataset of parking records from 8 car parks located in Bath, United Kingdom; datasets of potentially relevant information for predicting car park occupancy; and functions for obtaining and working with these datasets.
@@ -45,7 +45,7 @@ To install the package just run this command in the R console:
 ```
 devtools::install_github("owenjonesuob/BANEScarparking")
 ```
-(You'll need the `devtools` package to do this - you can install it with `install.packages("devtools")`)
+You'll need the `devtools` package to do this - you can install it with `install.packages("devtools")`
 
 Then you can load the package with
 ```
