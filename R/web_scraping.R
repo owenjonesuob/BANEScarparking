@@ -73,7 +73,7 @@ get_rugby <- function(x) {
             #   '%b': abbreviated month name
             #   ' ' : another space
             #   '%Y': 4-digit year
-        as.POSIXct(format = "%n%e %b %Y", tz = "UTC") %>%
+            as.POSIXct(format = "%n%e %b %Y", tz = "UTC") %>%
             # Reverse order of elements (to restore chronological order)
             rev()
         
@@ -334,8 +334,7 @@ get_events_detail <- function(from, to) {
             html_text_na <- function(x, ...) {
                 
                 txt <- try(rvest::html_text(x, ...))
-                if (inherits(txt, "try-error") |
-                    (length(txt)==0)) { return(NA) }
+                if (inherits(txt, "try-error") || (length(txt)==0)) { return(NA) }
                 return(txt)
                 
             }
